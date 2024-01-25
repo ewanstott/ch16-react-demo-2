@@ -1,13 +1,12 @@
 import React, { Component } from "react";
+import Links from "./Links";
 
 class Header extends Component {
   render() {
     return (
       <header>
         <nav>
-          <a>Home</a>
-          <a>About</a>
-          <a>Products</a>
+          <Links />
         </nav>
       </header>
     );
