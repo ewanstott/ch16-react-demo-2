@@ -12,9 +12,9 @@ class App extends Component {
       <>
         <Header></Header>
         <>
-          <Button text={"Button 1"} class="important" />
-          <Button text={"Button 2"} class="danger" />
-          <Button text={"Button 3"} class="demo" />
+          <Button text={"Button 1"} className="important" />
+          <Button text={"Button 2"} className="danger" />
+          <Button text={"Button 3"} className="demo" />
         </>
         <a>Link 1</a>
         <a>Link 1</a>
