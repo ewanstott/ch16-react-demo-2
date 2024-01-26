@@ -4,7 +4,11 @@ class News extends Component {
   render() {
     const { news } = this.props;
 
-    return <></>;
+    return (
+      <div>
+        <p>{news}</p>
+      </div>
+    );
   }
 }
 
