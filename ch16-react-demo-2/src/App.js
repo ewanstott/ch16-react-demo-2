@@ -1,14 +1,21 @@
 import React, { Component } from "react";
-import News from "./components/News";
-
-//Props - Passed from parent to child components.
 
 class App extends Component {
+  onBtnClick = () => {
+    console.log("Btn clicked");
+  };
+
+  // event handling involves defining and attaching functions to handle user interactions, such as clicks or input changes,
+
+  onTextInput = (e) => {
+    console.log("User typed: ", e.target.value);
+  };
+
   render() {
     return (
       <>
-        <News news="CH16 is great" />
-        <News news="Ewan is killing it!" />
+        <button onClick={this.onBtnClick}>Click me</button>
+        <input type="text" onInput={this.onTextInput} />
       </>
     );
   }
