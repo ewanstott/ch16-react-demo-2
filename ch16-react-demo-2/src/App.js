@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 
 class App extends Component {
-  onBtnClick = () => {
-    console.log("Btn clicked");
+  // STATE is for managing a component's internal data and triggering re-renders based on changes.
+  state = { count: 1 };
+
+  onCountClick = () => {
+    // this.setState -> function used to update a component's state, triggering a re-render and ensuring state changes are handled asynchronously.
+    console.log("onCountClick Started: ");
+    this.setState({ count: this.state.count + 1, clicked: true });
   };
 
-  // event handling involves defining and attaching functions to handle user interactions, such as clicks or input changes,
-
-  onTextInput = (e) => {
-    console.log("User typed: ", e.target.value);
-  };
-
+  //use this.state to get from local context, instead of this.props which gets from parent
   render() {
-    return (
-      <>
-        <button onClick={this.onBtnClick}>Click me</button>
-        <input type="text" onInput={this.onTextInput} />
-      </>
-    );
+    //destrucutre:
+    console.log(this.state);
+    const { count } = this.state;
+
+    return <p onClick={this.onCountClick}>{count}</p>;
   }
 }
 
+//
 export default App;
