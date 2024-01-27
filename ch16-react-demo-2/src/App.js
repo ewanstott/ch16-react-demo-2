@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import Interface from "./components/Interface";
 
 class App extends Component {
   // Initializes the component's state with an array of three todo items.
@@ -19,6 +20,14 @@ class App extends Component {
 
   //Handle Add Button Click:
   onAddClick = () => {
+    const isDuplicate = this.state.todos.some((todo) => {
+      todo.title === this.state.todoInput;
+    });
+
+    if (isDuplicate) {
+      return;
+    }
+
     const todos = [...this.state.todos]; //copy todos from state
     todos.push({ title: this.state.todoInput, todo: false }); //add new todo (already stored in state)
     this.setState({ todos }); //update state with new todos
@@ -56,23 +65,15 @@ class App extends Component {
     });
 
     return (
-      <>
-        <input type="text" onInput={this.onTodoInput} />
-        <button onClick={this.onAddClick}>Add</button>
-        <h1> Total todos: {totalTodo} </h1>
-        {todos.map((todo) => {
-          return (
-            //if todo has a done property that is true, add done to class, otherwise add undone
-            <div className={todo.done ? "done" : "undone"}>
-              <p onClick={() => this.onTodoToggleClick(todo.title)}>
-                {todo.title}
-              </p>
-              <button onClick={() => this.onDeleteClick(todo.title)}>X</button>
-            </div>
-          );
-        })}
-        <button onClick={this.onDeleteAll}> Delete ALL</button>
-      </>
+      <Interface
+        totalTodo={totalTodo}
+        onTodoInput={this.onTodoInput}
+        onAddClick={this.onAddClick}
+        todos={this.state.todos}
+        onTodoToggleClick={this.onTodoToggleClick}
+        onDeleteClick={this.onDeleteClick}
+        onDeleteAll={this.onDeleteAll}
+      />
     );
   }
 }
