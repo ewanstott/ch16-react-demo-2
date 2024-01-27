@@ -1,24 +1,34 @@
 import React, { Component } from "react";
 
 class App extends Component {
-  // STATE is for managing a component's internal data and triggering re-renders based on changes.
-  state = { count: 1 };
+  state = { todos: ["Clean car", "Buy cheese", "Go skiing"] };
 
-  onCountClick = () => {
-    // this.setState -> function used to update a component's state, triggering a re-render and ensuring state changes are handled asynchronously.
-    console.log("onCountClick Started: ");
-    this.setState({ count: this.state.count + 1, clicked: true });
+  onTodoInput = (e) => {
+    this.setState({ todoInput: e.target.value });
+    // console.log(e.target.value);
   };
 
-  //use this.state to get from local context, instead of this.props which gets from parent
-  render() {
-    //destrucutre:
-    console.log(this.state);
-    const { count } = this.state;
+  //when add clciked
+  onAddClick = () => {
+    const todos = [...this.state.todos]; //copy todos from state
+    todos.push(this.state.todoInput); //add new todo (already stored in state)
+    this.setState({ todos }); //update state with new todos
+  };
 
-    return <p onClick={this.onCountClick}>{count}</p>;
+  render() {
+    console.log(this.state);
+    const { todos } = this.state;
+
+    return (
+      <>
+        <input type="text" onInput={this.onTodoInput} />
+        <button onClick={this.onAddClick}>Add</button>
+        {todos.map((todo) => {
+          return <p>{todo}</p>;
+        })}
+      </>
+    );
   }
 }
 
-//
 export default App;
