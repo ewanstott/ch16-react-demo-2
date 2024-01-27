@@ -21,7 +21,7 @@ class App extends Component {
   //Handle Add Button Click:
   onAddClick = () => {
     const isDuplicate = this.state.todos.some((todo) => {
-      todo.title === this.state.todoInput;
+      return todo.title === this.state.todoInput;
     });
 
     if (isDuplicate) {

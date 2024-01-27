@@ -21,6 +21,7 @@ class Interface extends Component {
         {this.props.todos.map((todo) => {
           return (
             <Todo
+              key={todo.title}
               todo={todo}
               onTodoToggleClick={onTodoToggleClick}
               onDeleteClick={onDeleteClick}
